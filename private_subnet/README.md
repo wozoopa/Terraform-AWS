@@ -1,10 +1,14 @@
+private_subnet
+==============
 
 
 
-
+Usage
+-----
 
 `Example of using private_subnet with NAT Gateway:`
 
+```
 module "nat" {
   source = "git::https://github.com/wozoopa/aws.git//nat-gateway"
 
@@ -25,10 +29,11 @@ module "private_subnet" {
   nat_gateway_ids = "${module.nat.nat_gateway_ids}"
   nat_instance_ids = ""
 }
+```
 
 
 `Example of using private_subnet with Bastion host:`
-
+```
 module "private_subnet" {
   source = "git::https://github.com/wozoopa/aws.git//private_subnet"
 
@@ -40,3 +45,4 @@ module "private_subnet" {
 
   nat_instance_ids = "${module.bastion.id}"
 }
+```

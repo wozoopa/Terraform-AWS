@@ -1,9 +1,19 @@
 public_subnet
 =============
 
+Input Variables
+---------------
 
 Usage
 -----
+
+
+
+Outputs
+-------
+
+
+
 
 ```
 module "public_subnet" {

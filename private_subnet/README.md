@@ -2,6 +2,11 @@ private_subnet
 ==============
 
 
+Input Variables
+---------------
+
+Outputs
+-------
 
 Usage
 -----

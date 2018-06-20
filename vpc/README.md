@@ -1,1 +1,14 @@
-readme for vpc
+vpc
+===
+
+
+Input Variables
+---------------
+
+
+Outputs
+-------
+
+
+Usage
+-----

@@ -18,7 +18,7 @@ Usage
 -----
 
 module "sns" {
-  source        = "git::https://github.com/wozoopa/aws//sns
+  source        = "git::https://github.com/wozoopa/aws//sns"
 
   region        = "${var.region}"
   key_name      = "${var.key_name}"

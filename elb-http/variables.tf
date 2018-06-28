@@ -12,7 +12,9 @@ variable "idle_timeout" {
 
 variable "elb_backend_port" {}
 
-variable "elb_backend_protcol" {}
+variable "elb_backend_protocol" {}
+
+variable "lb_port_for_listener" {}
 
 variable "health_check_healthy_threshold" {
   default = "2"

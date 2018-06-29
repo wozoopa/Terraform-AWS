@@ -35,7 +35,8 @@ You can use this in your Terraform templates with the following steps:
 1.) Add a module resource to your template, e.g. `main.tf`
 ```
 module "web-elb" {
-  source                     = ".." ##
+  source        = "git::https://github.com/wozoopa/aws//elb-http"
+
 
   elb_name                   = "${var.name}-${lookup(var.environment, var.region)}-WEB-ELB"
   elb_subnets                = "${module.public_subnet.subnet_ids}"

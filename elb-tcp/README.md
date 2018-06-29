@@ -35,7 +35,7 @@ You can use this in your Terraform templates with the following steps:
 1.) Add a module resource to your template, e.g. `main.tf`
 ```
 module "ssh-elb-tcp" {
-  source                     = ".." ##
+  source        = "git::https://github.com/wozoopa/aws//elb_tcp"
 
   elb_name                   = "${var.name}-${lookup(var.environment, var.region)}-SSH-ELB-TCP"
   elb_security_groups        = "${module.ssh_elb_sg.sg_id}"

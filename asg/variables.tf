@@ -8,8 +8,8 @@ variable "asg_enable_public_ip" {
   description = "If not set then public ip is set on subnet level."
 }
 
-variable "asg_enable_monitoring" { default = ""}
-variable "asg_ebs_optimized" { }
+variable "asg_enable_monitoring" { default = "" }
+variable "asg_ebs_optimized" { default = "" }
 
 variable "load_balancers" {
   type = "list"
@@ -26,7 +26,7 @@ variable "asg_security_groups" {
 
 ## Auto-Scaling Group
 variable "asg_name" { }
-variable "asg_name_prefix" { }
+variable "asg_name_prefix" { default = "" }
 
 variable "asg_user_data" {
   default = ""
@@ -34,6 +34,7 @@ variable "asg_user_data" {
 
 variable "asg_number_of_instances" {
   description = "The number of instances we want in the ASG"
+  default = "1"
 }
 
 variable "asg_minimum_number_of_instances" {
@@ -62,11 +63,11 @@ variable "asg_default_cooldown" {
   default = "300"
 }
 
-variable "asg_target_group_arns" { }
-variable "asg_termination_policies" { }
-variable "asg_suspended_processes" { }
-variable "asg_placement_group" { }
-variable "asg_enabled_metrics" { }
-variable "asg_capacity_timeout" { }
-variable "asg_min_elb_capacity" { }
-variable "asg_wait_for_elb_capacity" { }
+variable "asg_target_group_arns" { default = "" }
+variable "asg_termination_policies" { default = "" }
+variable "asg_suspended_processes" { default = "" }
+variable "asg_placement_group" { default = "" }
+variable "asg_enabled_metrics" { default = "" }
+variable "asg_capacity_timeout" { default = "" }
+variable "asg_min_elb_capacity" { default = "" }
+variable "asg_wait_for_elb_capacity" { default = "" }

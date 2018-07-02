@@ -3,12 +3,12 @@ variable "lc_name" { }
 variable "lc_name_prefix" { }
 variable "asg_ami_id" { }
 variable "asg_instance_type" { }
-variable "asg_instance_profile" { }
+variable "asg_instance_profile" { default = "" }
 variable "asg_enable_public_ip" {
   description = "If not set then public ip is set on subnet level."
 }
 
-variable "asg_enable_monitoring" { }
+variable "asg_enable_monitoring" { default = ""}
 variable "asg_ebs_optimized" { }
 
 variable "load_balancers" {

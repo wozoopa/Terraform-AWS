@@ -5,8 +5,9 @@ variable "asg_ami_id" {}
 variable "asg_instance_type" {}
 variable "asg_instance_profile" {}
 variable "asg_enable_public_ip" {
-  description "If not set then public ip is set on subnet level."
+  description = "If not set then public ip is set on subnet level."
 }
+
 variable "asg_enable_monitoring" {}
 variable "asg_ebs_optimized" {}
 
@@ -69,4 +70,3 @@ variable "asg_enabled_metrics" { }
 variable "asg_capacity_timeout" { }
 vaviable "asg_min_elb_capacity" { }
 variable "asg_wait_for_elb_capacity" { }
-

@@ -63,11 +63,9 @@ variable "asg_default_cooldown" {
   default = "300"
 }
 
-variable "asg_target_group_arns" { default = "" }
-variable "asg_termination_policies" { default = "" }
-variable "asg_suspended_processes" { default = "" }
+variable "asg_target_group_arns" { default = [] }
+variable "asg_termination_policies" { default = [] }
+variable "asg_suspended_processes" { default = [] }
 variable "asg_placement_group" { default = "" }
-variable "asg_enabled_metrics" { default = "" }
+variable "asg_enabled_metrics" { default = [] }
 variable "asg_capacity_timeout" { default = "10m" }
-variable "asg_min_elb_capacity" { default = "" }
-variable "asg_wait_for_elb_capacity" { default = "" }

@@ -1,9 +1,13 @@
 resource "aws_launch_configuration" "launch_config" {
   name                        = "${var.lc_name}"
-  name_prefix                 = "${var.lc_name_prefix}"
+#  name_prefix                 = "${var.lc_name_prefix}"
+#
+# Use count to see if name_prefix is used
+#
+
   image_id                    = "${var.asg_ami_id}"
   instance_type               = "${var.asg_instance_type}"
-  instance_profile            = "${var.asg_instance_profile}"
+  iam_instance_profile        = "${var.asg_instance_profile}"
   security_groups             = ["${var.asg_security_groups}"]
   associate_public_ip_address = "${var.asg_enable_public_ip}"
   user_data                   = "${var.asg_user_data}"
@@ -40,19 +44,17 @@ resource "aws_autoscaling_group" "main_asg" {
 
   max_size                  = "${var.asg_number_of_instances}"
   min_size                  = "${var.asg_minimum_number_of_instances}"
-  default_cooldownn         = "${var.asg_default_cooldown}"
+  default_cooldown          = "${var.asg_default_cooldown}"
   load_balancers            = ["${var.load_balancers}"]
   desired_capacity          = "${var.asg_number_of_instances}"
   health_check_grace_period = "${var.asg_health_check_grace_period}"
   health_check_type         = "${var.asg_health_check_type}"
-  target_group_arns         = "${var.asg_target_group_arns}"
+  target_group_arns         = ["${var.asg_target_group_arns}"]
   termination_policies      = "${var.asg_termination_policies}"
-  suspended_processes       = "${var.asg_suspended_processes}"
+  suspended_processes       = ["${var.asg_suspended_processes}"]
   placement_group           = "${var.asg_placement_group}"
-  enabled_metrics           = "${var.asg_enabled_metrics}"
+  enabled_metrics           = ["${var.asg_enabled_metrics}"]
   wait_for_capacity_timeout = "${var.asg_capacity_timeout}"
-  min_elb_capacity          = "${var.asg_min_elb_capacity}"
-  wait_for_elb_capacity     = "${var.asg_wait_for_elb_capacity}"
 
   lifecycle {
     create_before_destroy = true

@@ -1,6 +1,6 @@
 variable "name" { }
 variable "lc_name" { }
-variable "lc_name_prefix" { }
+variable "lc_name_prefix" { default = "" }
 variable "asg_ami_id" { }
 variable "asg_instance_type" { }
 variable "asg_instance_profile" { default = "" }

@@ -68,5 +68,5 @@ variable "asg_suspended_processes" { }
 variable "asg_placement_group" { }
 variable "asg_enabled_metrics" { }
 variable "asg_capacity_timeout" { }
-vaviable "asg_min_elb_capacity" { }
+variable "asg_min_elb_capacity" { }
 variable "asg_wait_for_elb_capacity" { }

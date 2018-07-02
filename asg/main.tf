@@ -22,7 +22,10 @@ resource "aws_autoscaling_group" "main_asg" {
 #
 #
   name       = "${var.asg_name}-${aws_launch_configuration.launch_config.name}"
-  name_prefix = "${var.asg_name_prefix}"
+  #
+  # Use count to see if name_prefix is used
+  #
+  #name_prefix = "${var.asg_name_prefix}"
 
   # Split out the AZs string into an array
   # The chosen availability zones *must* match

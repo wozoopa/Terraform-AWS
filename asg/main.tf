@@ -34,7 +34,8 @@ resource "aws_autoscaling_group" "main_asg" {
   # Split out the AZs string into an array
   # The chosen availability zones *must* match
   # the AZs the VPC subnets are tied to.
-  availability_zones = ["${split(",", var.asg_azs)}"]
+  #availability_zones = ["${split(",", var.asg_azs)}"]
+  availability_zones = ["${element(split(",", var.asg_azs), count.index)}"]
 
   # Split out the subnets string into an array
   vpc_zone_identifier = ["${split(",", var.asg_subnets)}"]

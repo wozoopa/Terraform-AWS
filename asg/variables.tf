@@ -57,6 +57,7 @@ variable "asg_subnets" {
 
 variable "asg_azs" {
   description = "Availability Zones, comma separated list."
+  type = "list"
 }
 
 variable "asg_default_cooldown" {

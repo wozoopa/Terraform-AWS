@@ -1,9 +1,5 @@
 resource "aws_launch_configuration" "launch_config" {
   name                        = "${var.lc_name}"
-#  name_prefix                 = "${var.lc_name_prefix}"
-#
-# Use count to see if name_prefix is used
-#
 
   image_id                    = "${var.asg_ami_id}"
   instance_type               = "${var.asg_instance_type}"
@@ -21,14 +17,8 @@ resource "aws_launch_configuration" "launch_config" {
 }
 
 resource "aws_autoscaling_group" "main_asg" {
-#
-# HERE - add more variables
-#
-#
   name       = "${var.asg_name}-${aws_launch_configuration.launch_config.name}"
-  #
-  # Use count to see if name_prefix is used
-  #
+  
   #name_prefix = "${var.asg_name_prefix}"
 
   # Split out the AZs string into an array

@@ -30,20 +30,37 @@ Usage
 
 1.) Add a module resource to your template, e.g. `main.tf`
 ```
-module "asg" {
+module "asg" { 
   source                          = "git::https://github.com/wozoopa/aws//asg"
 
   name                            = "${var.name}-EC2"
   asg_name                        = "${var.name}-ASG"
   lc_name                         = "${var.name}-LC"
-  asg_ami_id                      = "${lookup(var.survey_ami, var.region)}"
-  asg_instance_type               = "t2.large"
+  asg_ami_id                      = "${lookup(var.web1_ami, var.region)}"
+  asg_instance_type               = "t2.nano"
   asg_security_groups             = ["${module.web_sg.web_sg_id}", "${module.bastion.ssh_from_nat_sg_id}"]
   asg_number_of_instances         = 1
   asg_minimum_number_of_instances = 1
   asg_subnets                     = "${module.private_subnet.subnet_ids}"
-  asg_azs                         = "${lookup(var.azs, var.region)}"
-  load_balancers                  = ["${module.elb_http.elb_name}"]
+  asg_azs                         = "${lookup(var.asg_azs, var.region)}"
+  load_balancers                 = ["${module.elb_http.elb_name}"]
+  asg_default_cooldown            = 300
+  asg_enable_public_ip            = "false"
+  key_name                        = "${var.key_name}"
+  asg_enable_monitoring           = "false"
 }
 ```
 
+2) Add variables in your variables.tf or in main.tf
+```
+variable "asg_azs" {
+   type = "map"
+
+   default = {
+     us-east-1 = "us-east-1b,us-east-1c,us-east-1d,us-east-1e"
+     us-west-1 = ""
+     us-west-2 = ""
+   }
+
+}
+```

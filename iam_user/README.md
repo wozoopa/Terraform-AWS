@@ -1,6 +1,8 @@
 iam_user
 ===
-IAM User 
+IAM User module.
+
+This code is using local-exec to create access_key instead of terraform resource aws_iam_access_key in favor of NOT storing secret_key in state file.
 
 Input Variables
 ---------------
@@ -16,7 +18,6 @@ $ aws iam list-access-keys --user-name <user-name>
 $ aws iam delete-access-key --user-name <user-name> --access-key-id <key-id>
 ```
 then run terraform to delete users.
-This code is using local-exec to create access_key instead of terraform resource aws_iam_access_key in favor of NOT storing secret_key in state file.
 
 
 Usage

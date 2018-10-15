@@ -4,16 +4,14 @@ public_subnet
 Input Variables
 ---------------
 
-Usage
------
-
-
 
 Outputs
 -------
 
 
 
+Usage
+-----
 
 ```
 module "public_subnet" {

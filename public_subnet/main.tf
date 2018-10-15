@@ -4,7 +4,6 @@
 #--------------------------------------------------------------
 
 resource "aws_subnet" "public" {
-  depends_on        = ["${var.ig_module_name}"]
   vpc_id            = "${var.vpc_id}"
   cidr_block        = "${element(split(",", var.cidrs), count.index)}"
   availability_zone = "${element(split(",", var.azs), count.index)}"

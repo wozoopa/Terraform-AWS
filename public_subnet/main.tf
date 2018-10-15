@@ -20,7 +20,7 @@ resource "aws_route_table" "public" {
 
   route {
       cidr_block = "0.0.0.0/0"
-      gateway_id = "${aws_internet_gateway.public.id}"
+      gateway_id = "${var.ig_id}"
   }
 
   tags { Name = "${var.name}.${element(split(",", var.azs), count.index)}" }

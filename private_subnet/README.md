@@ -1,6 +1,8 @@
 private_subnet
 ==============
 
+`Supports using NAT Gateway or ec2 NAT instance.`
+
 
 Input Variables
 ---------------

@@ -9,7 +9,7 @@ resource "aws_subnet" "public" {
   availability_zone = "${element(split(",", var.azs), count.index)}"
   count             = "${length(split(",", var.cidrs))}"
 
-  tags      { Name = "${var.name}.${element(split(",", var.azs), count.index)}" }
+  tags     = { Name = "${var.name}.${element(split(",", var.azs), count.index)}" }
   lifecycle { create_before_destroy = true }
 
   map_public_ip_on_launch = true
@@ -23,7 +23,7 @@ resource "aws_route_table" "public" {
       gateway_id = "${var.ig_id}"
   }
 
-  tags { Name = "${var.name}.${element(split(",", var.azs), count.index)}" }
+  tags = { Name = "${var.name}.${element(split(",", var.azs), count.index)}" }
 }
 
 resource "aws_route_table_association" "public" {

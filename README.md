@@ -24,6 +24,7 @@
 
 ``` file main.tf ```
 
+```
 terraform {
   required_version = "= 0.11.14"
 }
@@ -106,5 +107,5 @@ module "apache_asg" {
   instance_iam_role               = "ApacheEC2InstanceProfile-${var.environment}"
 }
 
-
+```
 

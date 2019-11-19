@@ -1,7 +1,7 @@
 ```ELB example```
 # requires ssl to be created
 
-
+```
 resource "aws_elb" "elb_https" {
   name            = "${var.name}-ELB"
   security_groups = ["${module.web_sg.web_sg_id}"]
@@ -56,3 +56,4 @@ resource "aws_lb_cookie_stickiness_policy" "stickiness2" {
   lb_port                  = 443
   cookie_expiration_period = 7200
 }
+```

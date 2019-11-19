@@ -1,3 +1,4 @@
+```
 variable "name" {
   default = "Application1"
 }
@@ -121,3 +122,4 @@ variable "ssl_cert_arn" {
   }
 }
 
+```

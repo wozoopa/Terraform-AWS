@@ -14,10 +14,8 @@ resource "aws_subnet" "private" {
 }
 
 resource "aws_route_table" "private_through_nat_gateway" {
-  count  = "${var.use_nat_gateway != "" ? 1 : 0 }"
-
+  count  = "${var.use_nat_gateway ? 1 : 0 }"
   vpc_id = "${var.vpc_id}"
-  count  = "${length(split(",", var.cidrs))}"
 
   route {
     cidr_block     = "0.0.0.0/0"
@@ -29,10 +27,8 @@ resource "aws_route_table" "private_through_nat_gateway" {
 }
 
 resource "aws_route_table" "private_through_nat_ec2" {
-  count  = "${var.use_ec2_nat != "" ? 1 : 0 }"
-
+  count  = "${var.use_ec2_nat ? 1 : 0 }"
   vpc_id = "${var.vpc_id}"
-  count  = "${length(split(",", var.cidrs))}"
 
   route {
     cidr_block     = "0.0.0.0/0"
@@ -44,9 +40,7 @@ resource "aws_route_table" "private_through_nat_ec2" {
 }
 
 resource "aws_route_table_association" "private_through_nat_gateway" {
-	count = "${var.use_nat_gateway != "" ? 1 : 0 }"
-  
-  count          = "${length(split(",", var.cidrs))}"
+  count          = "${length(split(",", var.cidrs)) * var.use_nat_gateway }"
   subnet_id      = "${element(aws_subnet.private.*.id, count.index)}"
   route_table_id = "${element(aws_route_table.private_through_nat_gateway.*.id, count.index)}"
 
@@ -54,9 +48,7 @@ resource "aws_route_table_association" "private_through_nat_gateway" {
 }
 
 resource "aws_route_table_association" "private_through_nat_ec2" {
-	count = "${var.use_ec2_nat != "" ? 1 : 0 }"
-  
-  count          = "${length(split(",", var.cidrs))}"
+  count          = "${length(split(",", var.cidrs)) * var.use_ec2_nat }"
   subnet_id      = "${element(aws_subnet.private.*.id, count.index)}"
   route_table_id = "${element(aws_route_table.private_through_nat_ec2.*.id, count.index)}"
 
